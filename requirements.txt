@@ -1,1 +1,2 @@
 streamlit
+chart_studio==1.0.0
