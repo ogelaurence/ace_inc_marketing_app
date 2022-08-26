@@ -23,9 +23,6 @@ image= Image.open('linegraph.png')
 st.sidebar.image(image, caption = " ", width=300)
 
 
-image1= Image.open('online store.jpeg')
-st.image(image1, caption = " ", width=300)
-
 choice = st.sidebar.selectbox('Make a Choice', ['Select','Analysis','Prediction'])
 plottype = ['Select','Distribution','Relationships','Comparison']
 variables = ['Select','View Relationship','Categorise Relationships']
