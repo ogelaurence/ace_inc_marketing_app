@@ -125,49 +125,53 @@ if choice == 'Analysis':
             st.error(f" Selected value cannot be represented in a distribution graph. ")
             
     elif plotselect == 'Relationships':
-        st.sidebar.markdown('<div style="text-align: center;"> A choice of Relationship can be used to see the relationship between the chosen Variables in the form of Histograms or Line charts or Pie charts</div>', unsafe_allow_html=True)
-        col1, col2,col3 = st.columns(3)
-        with col1:
-            x_axis_val = st.selectbox('Select the Variable 1 for Relationship plot', options= dataframe.columns)
-        #for x in x_axis_val:
-        
-        with col2:
-            y_axis_val = st.selectbox('Select the Variable 2 for Relationship plot', options= dataframe.columns)
-    
-        st.write= (f" Distribution of {x_axis_val}")
-        if x_axis_val in num:
-            if y_axis_val in num:
-                scat()
-            elif y_axis_val in cat:
-                with col3:
-                    rltype= st.radio('',['By Average','By Total'])
-                if rltype=='By Average':
-                    num_cat_avg()
-                elif rltype == 'By Total':
-                    num_cat_sum()
-            elif y_axis_val in dat:
-                num_dat()
-        elif x_axis_val in cat:
-            if y_axis_val in num:
-                with col3:
-                    rltype= st.radio('',['By Average','By Total'])
-                if rltype=='By Average':
-                    cat_num_avg()
-                elif rltype == 'By Total':
-                    cat_num_sum()
-            elif y_axis_val in cat:
-                #if y_axis_val == 'Promo' 
-                cat_cat()
-                
-        elif x_axis_val in dat:
-            if y_axis_val in num:
-                dat_num()
-            elif y_axis_val in cat:
-                st.error(f" Selected values cannot be plotted. ")   
-            
-        else:
-            st.error(f" Selected value cannot be represented in a plot ")
-            
+        try:
+            st.sidebar.markdown('<div style="text-align: center;"> A choice of Relationship can be used to see the relationship between the chosen Variables in the form of Histograms or Line charts or Pie charts</div>', unsafe_allow_html=True)
+            col1, col2,col3 = st.columns(3)
+            with col1:
+                x_axis_val = st.selectbox('Select the Variable 1 for Relationship plot', options= dataframe.columns)
+            #for x in x_axis_val:
+
+            with col2:
+                y_axis_val = st.selectbox('Select the Variable 2 for Relationship plot', options= dataframe.columns)
+
+            st.write= (f" Distribution of {x_axis_val}")
+            if x_axis_val in num:
+                if y_axis_val in num:
+                    scat()
+                elif y_axis_val in cat:
+                    with col3:
+                        rltype= st.radio('',['By Average','By Total'])
+                    if rltype=='By Average':
+                        num_cat_avg()
+                    elif rltype == 'By Total':
+                        num_cat_sum()
+                elif y_axis_val in dat:
+                    num_dat()
+            elif x_axis_val in cat:
+                if y_axis_val in num:
+                    with col3:
+                        rltype= st.radio('',['By Average','By Total'])
+                    if rltype=='By Average':
+                        cat_num_avg()
+                    elif rltype == 'By Total':
+                        cat_num_sum()
+                elif y_axis_val in cat:
+                    #if y_axis_val == 'Promo' 
+                    cat_cat()
+
+            elif x_axis_val in dat:
+                if y_axis_val in num:
+                    dat_num()
+                elif y_axis_val in cat:
+                    st.error(f" Selected values cannot be plotted. ")   
+
+            else:
+                st.error(f" Selected value cannot be represented in a plot ")
+       except ValueError:
+            st.error("Selected value cannot be represented in a plot")
+        except Exception:
+            st.error("Selected value cannot be represented in a plot")     
     elif plotselect == 'Comparison':
         st.info(" COMING SOON ")
         image= Image.open('coming soon.jpg')
