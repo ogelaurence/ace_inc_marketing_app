@@ -168,7 +168,7 @@ if choice == 'Analysis':
 
             else:
                 st.error(f" Selected value cannot be represented in a plot ")
-       except ValueError:
+        except ValueError:
             st.error("Selected value cannot be represented in a plot")
         except Exception:
             st.error("Selected value cannot be represented in a plot")     
